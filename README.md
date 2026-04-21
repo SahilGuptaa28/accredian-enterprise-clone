@@ -1,4 +1,4 @@
-````md
+
 # Accredian Enterprise — Partial Clone
 
 A responsive Next.js clone inspired by enterprise.accredian.com, built as a take-home assignment.
