@@ -1,9 +1,10 @@
+````md
 # Accredian Enterprise — Partial Clone
 
 A responsive Next.js clone inspired by enterprise.accredian.com, built as a take-home assignment.
 
-**Live demo:** *https://accredian-enterprise-clone.vercel.app/*
-
+**Live demo:** *https://accredian-enterprise-clone.vercel.app/*  
+**GitHub:** *https://github.com/SahilGuptaa28/accredian-enterprise-clone*
 
 ---
 
@@ -11,7 +12,7 @@ A responsive Next.js clone inspired by enterprise.accredian.com, built as a take
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/accredian-enterprise-clone.git
+git clone https://github.com/SahilGuptaa28/accredian-enterprise-clone.git
 cd accredian-enterprise-clone
 
 # 2. Install dependencies
@@ -23,7 +24,7 @@ npm run dev
 
 # 4. Build for production
 npm run build && npm start
-```
+````
 
 No environment variables are required. The app works out of the box.
 
@@ -53,7 +54,7 @@ src/
 │       ├── stats/
 │       │   └── route.js   # GET /api/stats — mock stats data
 │       └── leads/
-│           └── route.js   # POST /api/leads — lead capture + file storage
+│           └── route.js   # POST /api/leads — lead capture + API response
 ├── components/
 │   ├── Navbar.js          # Sticky nav, mobile hamburger, smooth scroll
 │   ├── Hero.js            # Hero section with dashboard card
@@ -86,7 +87,9 @@ Each section was built as an isolated React component. Shared content is stored 
 
 * **GET /api/stats** — the Stats section fetches live data from this route.
 * **POST /api/leads** — the LeadForm sends demo requests to this route.
-* Leads are validated server-side and stored in `leads.json` using file-system storage.
+* Leads are validated server-side before returning a success response.
+* In local development, leads can be stored in `leads.json`.
+* In production on Vercel, lead persistence is disabled because local file storage is read-only in serverless environments. The current implementation returns a success response for demo purposes.
 
 ### 4. Responsive design
 
@@ -107,13 +110,13 @@ The page was designed mobile-first using Tailwind responsive utilities. The layo
 
 I used AI tools such as ChatGPT, Claude, and GitHub Copilot throughout the project.
 
-| Area                | What AI helped with                                                                 | What I improved manually                                                |
-| ------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| Component structure | Generated initial JSX layouts                                                       | Adjusted spacing, sizing, and visual hierarchy                          |
-| Tailwind styling    | Suggested utility classes                                                           | Refined styling to better match the reference website                   |
-| API routes          | Helped scaffold GET and POST handlers                                               | Added validation, JSON storage, and better error handling               |
-| Mock data           | Suggested placeholder content                                                       | Rewrote text, testimonials, and feature descriptions                    |
-| Debugging           | Helped identify import issues, Tailwind errors, and Next.js client component issues | Fixed folder structure, alias configuration, and syntax issues manually |
+| Area                | What AI helped with                                                                 | What I improved manually                                                                   |
+| ------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Component structure | Generated initial JSX layouts                                                       | Adjusted spacing, sizing, and visual hierarchy                                             |
+| Tailwind styling    | Suggested utility classes                                                           | Refined styling to better match the reference website                                      |
+| API routes          | Helped scaffold GET and POST handlers                                               | Added validation, JSON storage, production fallback handling, and better error responses   |
+| Mock data           | Suggested placeholder content                                                       | Rewrote text, testimonials, and feature descriptions                                       |
+| Debugging           | Helped identify import issues, Tailwind errors, and Next.js client component issues | Fixed folder structure, alias configuration, deployment issues, and syntax errors manually |
 
 AI was mainly used to speed up development, while all final decisions, debugging, and integration were handled manually.
 
@@ -121,7 +124,7 @@ AI was mainly used to speed up development, while all final decisions, debugging
 
 ## What I would improve with more time
 
-1. Replace `leads.json` with MongoDB Atlas or Supabase for persistent storage.
+1. Replace `leads.json` with MongoDB Atlas or Supabase for persistent storage so lead submissions work reliably in production deployments on Vercel.
 2. Add email notifications after form submission.
 3. Use actual brand logos and optimise them with `next/image`.
 4. Add scroll-triggered animations using Intersection Observer.
@@ -147,3 +150,6 @@ The project requires no environment variables and deploys with zero configuratio
 ---
 
 *Built by Sahil Gupta · B.Tech IT · Kalyani Government Engineering College*
+
+```
+```
