@@ -57,20 +57,24 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <button
-              onClick={() => handleNav('#lead-form')}
-              className="text-sm font-medium text-slate-200 hover:text-white transition-colors"
-            >
-              Contact Sales
-            </button>
+  <button
+    onClick={() => handleNav('#lead-form')}
+    className={`text-sm font-medium transition-colors ${
+      scrolled
+        ? 'text-slate-700 hover:text-slate-900'
+        : 'text-slate-200 hover:text-white'
+    }`}
+  >
+    Contact Sales
+  </button>
 
-            <button
-              onClick={() => handleNav('#lead-form')}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg px-5 py-2 text-sm transition-all duration-300 shadow-md hover:shadow-lg"
-            >
-              Get a Demo
-            </button>
-          </div>
+  <button
+    onClick={() => handleNav('#lead-form')}
+    className="bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg px-5 py-2 text-sm transition-all duration-300 shadow-md hover:shadow-lg"
+  >
+    Get a Demo
+  </button>
+</div>
 
           {/* Mobile hamburger */}
           <button
