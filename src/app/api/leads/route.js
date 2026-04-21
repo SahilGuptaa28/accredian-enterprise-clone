@@ -1,21 +1,4 @@
 import { NextResponse } from 'next/server'
-import { promises as fs } from 'fs'
-import path from 'path'
-
-const DB_PATH = path.join(process.cwd(), 'leads.json')
-
-async function readLeads() {
-  try {
-    const data = await fs.readFile(DB_PATH, 'utf8')
-    return JSON.parse(data)
-  } catch {
-    return []
-  }
-}
-
-async function writeLeads(leads) {
-  await fs.writeFile(DB_PATH, JSON.stringify(leads, null, 2))
-}
 
 export async function POST(request) {
   try {
@@ -24,48 +7,62 @@ export async function POST(request) {
 
     if (!name || !company || !email) {
       return NextResponse.json(
-        { success: false, error: 'Name, company and email are required.' },
+        {
+          success: false,
+          error: 'Name, company and email are required.',
+        },
         { status: 400 }
       )
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
     if (!emailRegex.test(email)) {
       return NextResponse.json(
-        { success: false, error: 'Please provide a valid email address.' },
+        {
+          success: false,
+          error: 'Please provide a valid email address.',
+        },
         { status: 400 }
       )
     }
 
     const lead = {
-      id:        Date.now().toString(),
-      name:      name.trim(),
-      company:   company.trim(),
-      email:     email.trim().toLowerCase(),
-      phone:     phone?.trim() || '',
-      teamSize:  teamSize || '',
-      message:   message?.trim() || '',
+      id: Date.now().toString(),
+      name: name.trim(),
+      company: company.trim(),
+      email: email.trim().toLowerCase(),
+      phone: phone?.trim() || '',
+      teamSize: teamSize || '',
+      message: message?.trim() || '',
       createdAt: new Date().toISOString(),
     }
 
-    const leads = await readLeads()
-    leads.push(lead)
-    await writeLeads(leads)
-
     return NextResponse.json(
-      { success: true, message: "Thanks! We'll be in touch within 24 hours.", id: lead.id },
+      {
+        success: true,
+        message: "Thanks! We'll be in touch within 24 hours.",
+        data: lead,
+      },
       { status: 201 }
     )
   } catch (err) {
     console.error('Lead API error:', err)
+
     return NextResponse.json(
-      { success: false, error: 'Something went wrong. Please try again.' },
+      {
+        success: false,
+        error: 'Something went wrong. Please try again.',
+      },
       { status: 500 }
     )
   }
 }
 
 export async function GET() {
-  const leads = await readLeads()
-  return NextResponse.json({ success: true, count: leads.length, data: leads })
+  return NextResponse.json({
+    success: true,
+    message: 'Lead API is working.',
+    note: 'Lead persistence is disabled in production deployment.',
+  })
 }
