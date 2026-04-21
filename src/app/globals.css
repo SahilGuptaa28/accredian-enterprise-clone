@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-500: #4361ee;
+  --brand-700: #2541b2;
+  --accent-400: #f72585;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+}
+
+@layer utilities {
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+
+  .opacity-0-init { opacity: 0; }
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #0f1f6e 0%, #1a3a9e 40%, #2541b2 70%, #4361ee 100%);
+}
+
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(67, 97, 238, 0.15);
+}
+
+.stat-card-hover {
+  transition: transform 0.2s ease;
+}
+.stat-card-hover:hover {
+  transform: scale(1.03);
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 bg-brand-500 text-white font-medium px-6 py-3 rounded-xl hover:bg-brand-700 transition-all duration-200 shadow-md hover:shadow-lg;
+}
+
+.btn-outline {
+  @apply inline-flex items-center gap-2 border-2 border-white text-white font-medium px-6 py-3 rounded-xl hover:bg-white hover:text-brand-700 transition-all duration-200;
+}
+
+.section-tag {
+  @apply inline-block text-xs font-semibold tracking-widest uppercase text-brand-500 bg-brand-50 px-3 py-1 rounded-full mb-4;
+}
+
+.section-heading {
+  @apply font-display text-3xl md:text-4xl font-bold text-gray-900 leading-tight;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #4361ee, #f72585);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+.animate-pulse-dot { animation: pulse-dot 1.5s ease-in-out infinite; }
+
+.in-view {
+  animation: fadeUp 0.65s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
