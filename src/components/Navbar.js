@@ -57,16 +57,16 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
-  <button
-    onClick={() => handleNav('#lead-form')}
-    className={`text-sm font-medium transition-colors ${
-      scrolled
-        ? 'text-slate-700 hover:text-slate-900'
-        : 'text-slate-200 hover:text-white'
-    }`}
-  >
-    Contact Sales
-  </button>
+ <button
+  onClick={() => handleNav('#lead-form')}
+  className={`text-sm font-medium transition-colors ${
+    scrolled
+      ? 'text-black hover:text-gray-900'
+      : 'text-slate-200 hover:text-white'
+  }`}
+>
+  Contact Sales
+</button>
 
   <button
     onClick={() => handleNav('#lead-form')}
