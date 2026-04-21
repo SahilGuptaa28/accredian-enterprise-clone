@@ -3,7 +3,7 @@
 A responsive Next.js clone inspired by enterprise.accredian.com, built as a take-home assignment.
 
 **Live demo:** *https://accredian-enterprise-clone.vercel.app/*
-**GitHub:** *[Add your repo link here]*
+
 
 ---
 
