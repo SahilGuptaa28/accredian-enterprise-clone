@@ -53,11 +53,15 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-up animate-delay-400">
               <button
                 onClick={() => scrollTo('#lead-form')}
-                className="btn-primary bg-white !text-white hover:bg-yellow-50 !shadow-xl group"
+                className="btn-outline group"
               >
                 Get a Free Demo
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform " />
+                <ArrowRight
+                  size={16}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
               </button>
+
               <button
                 onClick={() => scrollTo('#programs')}
                 className="btn-outline"
@@ -81,7 +85,7 @@ export default function Hero() {
                 {[
                   { val: '94%', label: 'Completion', color: '#4361ee' },
                   { val: '4.8★', label: 'Satisfaction', color: '#f72585' },
-                  { val: '82%',  label: 'Skill Gain', color: '#06d6a0' },
+                  { val: '82%', label: 'Skill Gain', color: '#06d6a0' },
                 ].map(s => (
                   <div key={s.label} className="bg-gray-50 rounded-xl p-3 text-center">
                     <div className="font-display font-bold text-lg" style={{ color: s.color }}>{s.val}</div>
